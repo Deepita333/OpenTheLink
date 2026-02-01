@@ -224,42 +224,6 @@
             50% { opacity: 0.5; transform: scale(1.2); }
         }
 
-        /* Reason cards */
-        .reasons {
-            margin: 30px 0;
-            text-align: left;
-        }
-
-        .reason-card {
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe8f0 100%);
-            padding: 20px 25px;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--pink);
-            animation: slideIn 0.5s ease-out forwards;
-            opacity: 0;
-        }
-
-        .reason-card:nth-child(1) { animation-delay: 0.2s; }
-        .reason-card:nth-child(2) { animation-delay: 0.4s; }
-        .reason-card:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .reason-card strong {
-            color: var(--deep-pink);
-            font-size: 1.1rem;
-        }
-
         /* Final screen */
         .confetti-container {
             position: fixed;
@@ -532,12 +496,6 @@
             transition: width 0.3s ease;
         }
 
-        .break-particles {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
         .particle {
             position: absolute;
             width: 10px;
@@ -553,39 +511,82 @@
             }
         }
 
-        @media (max-width: 600px) {
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
             .container {
-                padding: 40px 30px;
+                padding: 50px 35px;
+                width: 95%;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .handwritten {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
+            }
+            
+            p {
+                font-size: 1.05rem;
+            }
+            
+            .emoji {
+                font-size: 3.5rem;
+            }
+
+            .button {
+                padding: 16px 40px;
+                font-size: 1.05rem;
+            }
+
+            .game-area {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            
+            .handwritten {
+                font-size: 1.4rem;
+            }
+            
+            p {
+                font-size: 1rem;
             }
             
             .emoji {
                 font-size: 3rem;
             }
 
+            .button {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+
             .scratch-container {
                 max-width: 100%;
-                height: 280px;
+                height: 250px;
             }
 
             #scratchCanvas {
                 width: 100%;
-                height: 280px;
+                height: 250px;
             }
 
             .scratch-message .handwritten {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
 
             .scratch-message p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .music-toggle {
@@ -602,11 +603,56 @@
             }
 
             .break-btn {
-                min-width: 200px;
+                min-width: 180px;
+                padding: 16px 35px;
             }
 
             .break-progress {
-                width: 200px;
+                width: 180px;
+            }
+
+            .checklist {
+                max-width: 100%;
+            }
+
+            .check-item {
+                padding: 15px 20px;
+                font-size: 1.05rem;
+            }
+
+            .game-area {
+                height: 280px;
+            }
+
+            .score-board {
+                font-size: 1.1rem;
+                padding: 12px;
+            }
+
+            .heart-target {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .handwritten {
+                font-size: 1.3rem;
+            }
+
+            .scratch-container {
+                height: 220px;
+            }
+
+            .scratch-message .handwritten {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -621,7 +667,8 @@
     
     <!-- Background Music -->
     <audio id="bgMusic" loop>
-        <source src="Alessia Cara - I Choose.mp3" type="audio/mpeg">
+        <!-- Using a royalty-free romantic song from Pixabay -->
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_4a456a77bd.mp3" type="audio/mpeg">
     </audio>
     
     <div class="container">
@@ -728,7 +775,7 @@
             <div class="screen" id="screen6">
                 <div class="emoji sparkle">💖</div>
                 <h1 style="font-size: 2.2rem; margin-top: 20px;">So... Will you be my Galentine?</h1>
-                <p style="margin-top: 25px;">Let's celebrate friendship, have fun, and make this Valentine's Day memorable together!</p>
+                <p style="margin-top: 25px;">Let’s celebrate friendship, laugh a little, and enjoy the time together!</p>
                 <p class="handwritten" style="font-size: 1.5rem; margin-top: 20px;">
                     (Until Mr. Perfect Porsche shows up, of course! 😉)
                 </p>
@@ -766,18 +813,8 @@
                 </div>
             </div>
 
-            <!-- Screen 5: Celebration -->
-            <div class="screen" id="screen5">
-                <div class="final-message">🎉</div>
-                <h1 style="margin-top: 20px;">Yay!</h1>
-                <p class="handwritten" style="font-size: 2.5rem; margin: 30px 0;">
-                    Best galentines ever!
-                </p>
-                <p style="font-size: 1.3rem;">Can't wait to celebrate with you! 💕✨</p>
-            </div>
-
-            <!-- Screen 5: Celebration -->
-            <div class="screen" id="screen5">
+            <!-- Screen 7: Celebration -->
+            <div class="screen" id="screen7">
                 <div class="final-message">🎉</div>
                 <h1 style="margin-top: 20px;">Yay!</h1>
                 <p class="handwritten" style="font-size: 2.5rem; margin: 30px 0;">
@@ -815,6 +852,7 @@
             if (!isMusicPlaying) {
                 bgMusic.play().catch(e => console.log('Auto-play prevented'));
                 isMusicPlaying = true;
+                musicToggle.textContent = '🔊';
             }
         }
 
@@ -968,7 +1006,6 @@
 
         // Heart Catching Game
         let gameScore = 0;
-        let gameInterval;
         let spawnInterval;
 
         function startHeartGame() {
